@@ -1,6 +1,7 @@
 <h1>ExpNo 5 : Implement Simple Hill Climbing Algorithm</h1> 
-<h3>Name:             </h3>
-<h3>Register Number:             </h3>
+<h3>Name:  Akshara K           </h3>
+<h3>Register Number:  212225040016           </h3>
+DATE : 26/10/2026
 <H3>Aim:</H3>
 <p>Implement Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration </p>
 <h2> Theory: </h2>
@@ -39,6 +40,77 @@ Feedback is provided in terms of heuristic function
 <p> Lopp Step -2 and Step-3  until we achieve the score to be Zero to achieve Global Minima.</p>
 
 <hr>
+
+<hr>
+program
+import random
+
+import string
+
+def generate_random_solution(answer):
+
+    l = len(answer)                                                                # Find the length of the answer
+
+    return [random.choice(string.printable) for _ in range(l)]
+
+def evaluate(solution, answer):
+
+    print(solution)
+
+    target = list(answer)
+
+    diff = 0
+
+    for i in range(len(target)):
+
+        s = solution[i]
+
+        t = target[i]
+
+        diff += abs(ord(s) - ord(t))
+
+    return diff
+
+def mutate_solution(solution):
+
+    ind = random.randint(0, len(solution) - 1)
+
+    solution[ind] = random.choice(string.printable)
+
+    return solution
+
+
+
+def SimpleHillClimbing():
+
+    answer = input("Enter the String:")
+
+    best = generate_random_solution(answer)
+
+    best_score = evaluate(best, answer)
+
+    while True:
+
+        print("Score:", best_score, " Solution:", "".join(best))
+
+        if best_score == 0:
+
+            print("\nTarget String Found!")
+
+            break
+
+        new_solution = mutate_solution(list(best))
+
+        score = evaluate(new_solution, answer)
+
+        if score < best_score:
+
+            best = new_solution
+
+            best_score = score
+
+SimpleHillClimbing()
+
 <h2>Sample Input and Output</h2>
 <h2>Sample String:</h2> Artificial Intelligence
 <h2>Output:</h2>
@@ -59,3 +131,11 @@ Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 0  Solution :  Artificial Intelligence<br>
+<hr>
+<h3>
+result
+ <img width="837" height="416" alt="image" src="https://github.com/user-attachments/assets/986296cb-6095-4ddf-9c92-1e0f9e5c2b62" />
+
+</h3>
+</h3>
+<hr>
